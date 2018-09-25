@@ -1,5 +1,29 @@
 #!/usr/bin/php
 <?php
+$servername = "localhost";
+$username = "dbAdmin";
+$password = "password123!";
+$dbname = "loginDB";
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+
+if(!$conn)
+{
+	die("Connection failed: " . mysqli_connect_error());
+}
+if($conn)
+{
+	die("Connection Successful!");
+}
+
+
+
+
+
+
+
+
+
+
 require_once('path.inc');
 require_once('get_host_info.inc');
 require_once('rabbitMQLib.inc');
