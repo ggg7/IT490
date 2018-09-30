@@ -1,8 +1,5 @@
 <!doctype html>
-<?php
-	require_once('linkDB.php');
-?>
-
+ 
 <head>
  
     <!-- Basics -->
@@ -18,7 +15,8 @@
     
  </head>
 
-
+    <form  class="form-inline" method="post" action="testRabbitMQServer.php">
+    
     <div class="container">
         <div class="card card-container">
             <img id="profile-img" class="profile-img-card" src="https://qph.fs.quoracdn.net/main-qimg-87001d2ce810c2f48c97032cbc905939" style="width:200.67px;height:150.67px; />
@@ -32,7 +30,7 @@
                         <input type="checkbox" value="remember-me"> Remember me
                     </label>
                 </div>
-                <button class="btn btn-lg btn-primary btn-block btn-login" type="submit">Log in</button>
+                <button class="btn btn-lg btn-primary btn-block btn-login" type="submit" ="submit" id="submit">Log in</button>
             </form><!-- /form -->
             <a href="#" class="forgot-password">
                 Forgot the password?
