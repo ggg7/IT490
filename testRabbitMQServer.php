@@ -1,45 +1,37 @@
 #!/usr/bin/php
 <?php
+	//Mock data
+	$user = 'peter';
+	$pass = '1234';
 
-//Setting the loginDB login information for mysql
-$servername = "localhost";
-$username = "dbAdmin";
-$password = "password123!";
-$dbname = "loginDB";
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-//Checking if connection is established and relaying the status in a message
-if(!$conn)
-{
-        die("Connection failed: " . mysqli_connect_error());
-}
-if($conn)
-{
-        die("Connection Successful!");
-}
+	//Connecting to the server and selecting the database
+	$conn = mysqli_connect("localhost", "dbAdmin", "password123!","loginDB");
+	//Checking if connection is established and relaying the status in a message
 
-//Setting the username received from the front end to the variable login
-$login=$_POST['username'];
-
-//Checking to see if the username is empty
-if($username!='')
-{
-	$query = "select * from username where login='".$username."'" or die("Connection failed: " . mysqli_connect_error());
-	$res = mysqli_fetch_row($query);
-	if($res)
+	if(!$conn)
 	{
-		$_SESSION['username']=$login;
-		echo "welcome to php";
+        	printf ("Connection failed: " . mysqli_connect_error());
 	}
+	if($conn)
+	{
+       		printf ("Connection Successful!\n");
+	}
+
+	//Query the database
+	$result = mysqli_query($conn, "select * from loginTable where username ='$user' and password = '$pass'") or die("Failed to query".mysqli_error());
+
+	$row = mysqli_fetch_array($result);
+	//Check to see if mock username and password match the data in the database
+	//if matches display this
+	if($row['username'] == $user && $row['password'] == $pass)
+	{
+		printf ("Login successful!\nWelcome user ".$row['username']);
+	}
+	//if it does not, display this
 	else
 	{
-		echo 'You entered a username not found in the database';
+		printf ('Login failed\n');
 	}
-}
-else
-{
-	echo 'Enter username';
-}
-
 function ActuallyDoLogin($username, $password)
 {
 
