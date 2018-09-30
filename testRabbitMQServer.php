@@ -5,9 +5,13 @@
 	$pass = '1234';
 
 	//Connecting to the server and selecting the database
-	$conn = mysqli_connect("localhost", "dbAdmin", "password123!","loginDB");
-	//Checking if connection is established and relaying the status in a message
+	$servername = "localhost";
+	$username = "dbAdmin";
+	$password = "password123!";
+	$dbname = "loginDB";
+	$conn = mysqli_connect($servername, $username, $password,$dbname);
 
+	//Checking if connection is established and relaying the status in a message
 	if(!$conn)
 	{
         	printf ("Connection failed: " . mysqli_connect_error());
