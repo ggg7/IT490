@@ -11,10 +11,11 @@
 	$password = "password123!";
 	$dbname = "loginDB";
 	$conn = mysqli_connect($servername, $username, $password,$dbname);
-
-	$user = $_POST['user'];
-        $pass = $_POST['pass'];
-
+	
+	if (isset($POST['submit'])){
+	    $user = $_POST['user'];
+            $pass = $_POST['pass'];
+        }
 	//Checking if connection is established and relaying the status in a message
 	if(!$conn)
 	{
